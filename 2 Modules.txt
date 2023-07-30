@@ -1,0 +1,47 @@
+modules:
+https://docs.ansible.com/ansible/latest/module_plugin_guide/modules_intro.html
+
+all collection of modules:
+https://docs.ansible.com/ansible/latest/collections/index.html#list-of-collections
+
+
+
+modules that already built-in in ansible: 
+https://docs.ansible.com/ansible/latest/collections/ansible/builtin/index.html#plugins-in-ansible-builtin
+
+
+ansible.builtin.copy:
+https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html#examples
+
+
+
+
+
+Modules (also referred to as “task plugins” or “library plugins”) are discrete units of code that can be used from the command line or in a playbook task.
+
+
+example for use of a module:
+
+ansible.builtin.find module – Return a list of files based on specific criteria:
+
+ex: find all all files in downloads
+
+one way,
+inside playbooks:
+- name: Use a single pattern that contains a comma formatted as a list
+  ansible.builtin.find:
+    paths: /Downloads
+    file_type: file
+
+other way,
+in terminal(ad-hoc commands):
+ansible localhost -m find -a "paths=Downloads file_type=file"
+
+here -m for executing module
+-a to specify attributes of the module
+localhost because we are executing task only in localhost
+
+
+
+
+

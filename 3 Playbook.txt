@@ -1,0 +1,60 @@
+Playbooks: (will be in yml file)
+list of tasks u want to execute many times.
+indentation and all are important
+
+link:
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html
+
+
+executing playbook:
+ansible-playbook playbook_name.yml
+or
+ansible-playbook playbook_name.yml -v              //this gives more info
+
+
+ex: these will go inside a YAML file(with yml extension)
+
+---
+
+- name: "My first play"
+  hosts: localhost
+
+  tasks:
+
+  - name: "test reachability"
+    ping:
+
+  - name: "install stress"
+    homebrew:
+      name: stress
+      state: present  
+
+
+
+here ping and homebrew are modules
+
+
+
+
+
+
+
+ex: check system reacabilty of system and display contents of any 2 files
+
+---
+- name: "playbook for ping system and display details of files"
+  hosts: localhost
+
+  tasks:
+
+  - name: "testing the reachability"
+    ping:
+
+  - name: "display details of multiple files"
+    ansible.builtin.debug: var=item
+    with_file:
+      - "~/poem1.txt"
+      - "~/poem2.txt"
+
+
+

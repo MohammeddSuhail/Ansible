@@ -1,0 +1,25 @@
+inventory file:
+List of devices that we are controlling(can use IP addresses or fully qualified domain name)
+
+in inventory file:
+[group_name]
+hosts_under_this_group
+[group_name]
+hosts_under_this_group
+
+ex:
+                        //these are varibles
+[southeast] 
+localhost               ansible_connection=local 
+other1.example.com      ansible_connection=ssh      ansible_user=ubuntu
+
+[northeast] 
+other2.example.com 
+10.10.100.10 
+
+[southwest] 
+10.10.200.10 
+
+[east : children]      //this has both the groups(since we specify them as it's children below)
+southeast 
+northeast 
