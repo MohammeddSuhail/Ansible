@@ -58,3 +58,20 @@ ex: check system reacabilty of system and display contents of any 2 files
 
 
 
+
+
+
+
+
+
+
+If the connection is local, then u can reduce the overhead by specifying 
+connection: local
+in playbook
+
+---
+-name: "something"
+ hosts: localhost
+ connection: local
+
+ 
