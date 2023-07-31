@@ -1,0 +1,74 @@
+Tags are used for controlling the execution of tasks in playbook.
+By default when we execute a playbook, it executes all tasks in playbook, tags is used for selective execution of tasks.
+
+we can execute a perticular task in the playbook, 
+we can skip a task in the playbook and execute the rest.
+
+Here we add tag to each task.
+
+ 
+example where tags is added to each task:
+
+
+---
+
+name: "some playbook name"
+hosts: webservers 
+become: yes 
+tasks: 
+	- name: Install Apache2 
+          apt: 
+	    name: apache2 
+            state: present 
+            update_cache: yes 
+            cache_valid_time: 3600 
+          tags: apache2 
+         
+        - name: Install NTP 
+          apt: 
+            name: ntp 
+            state: present 
+          tags: ntp 
+
+        - name: Start NTP 
+          service: name=ntp state=started enabled=yes 
+          tags: ntp_start 
+
+
+
+
+
+we can execute a perticular task in the playbook:
+ansible-playbook playbook_name.yml --tags specfic_tag_name 
+ex:
+ansible-playbook tags.yml --tags ntp
+
+
+
+
+For listing all tags in a playbook:
+ansible-playbook playbook_name.yml --list-tags
+
+
+
+
+we can skip a task in the playbook and execute the rest:
+ansible-playbook playbook_name.yml --skip-tags tag_to_skip
+ex:
+ansible-playbook tags.yml --skip-tags ntp_start
+
+
+
+
+
+
+without using tags,
+
+starting at a speific task, skipping tasks before it
+ansible-playbook tags.yml --start-at-task 'Install NTP'
+                                          //name of the task
+
+
+
+it goes task by task and asks us whether we wanna execute it
+ansible-playbook tags.yml --step

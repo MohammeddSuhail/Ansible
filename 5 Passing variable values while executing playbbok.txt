@@ -1,0 +1,32 @@
+some other servers...
+
+[backupservers] 
+target6 backup_file=/tmp/test1 
+
+[all : vars] 
+temp_file=/tmp/test2 
+
+[webservers : vars]
+temp_file=/tmp/test3
+
+
+
+
+
+--- 
+- hosts : webservers 
+
+  tasks : 
+  
+  - name : Create a file 
+    file : 
+      dest : '{{temp_file}}'                   //temp_file is specified in inventory file
+      state : '{{file_state}}'                 //we set file_state value while executing playbook
+    when : temp_file is defined                    
+
+
+
+5 Passing variable values while executing playbbok:
+ansible-playbook invvars.yml -e file_state=touch 
+                              //setting file_state as touch
+
