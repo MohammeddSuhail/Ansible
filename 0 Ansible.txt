@@ -1,4 +1,4 @@
-Roles: is a new functionality the community  people create
+Roles: is a new functionality the community people create
 
 
 Plugin: extension of a existing functinality
