@@ -1,0 +1,158 @@
+copying file:
+
+---
+- name: "playbook for checking copy module"
+  hosts: localhost
+
+  tasks:
+
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: ~/poem1.txt
+      dest: ~/Downloads/some.txt
+      mode: '777'
+
+
+
+
+
+
+
+
+---
+- name: "playbook for checking copy module"
+  hosts: localhost
+
+  tasks:
+
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: ~/poem1.txt
+      dest: ~/Downloads
+      owner: suhail
+      group: suhail
+      mode: '0644'
+
+     
+
+
+
+
+copying file and giving it a name:
+
+---
+- name: "playbook for checking copy module"
+  hosts: localhost
+
+  tasks:
+
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: ~/poem1.txt
+      dest: ~/Downloads/some.txt
+      owner: suhail
+      group: suhail
+      mode: u+rw,g-wx,o-rwx
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copies all files in Downloads directory to Music directory
+
+---
+- name: "playbook for checking copy module"
+  hosts: localhost
+
+  tasks:
+
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: ~/Downloads/
+      dest: ~/Music
+      mode: '777'
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+Copies Downloads directory to Music directory
+
+---
+- name: "playbook for checking copy module"
+  hosts: localhost
+
+  tasks:
+
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: ~/Downloads
+      dest: ~/Music
+      mode: '777'
+
+
+
+
+
+
+
+
+
+
+
+Copies Downloads directory to Music/gg directory(if gg directory is not there, it will create it)
+
+---
+- name: "playbook for checking copy modukle"
+  hosts: localhost
+
+  tasks:
+
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: ~/Downloads
+      dest: ~/Music/gg
+      mode: '777'
+
+
+
+
+
+
+
+
+
+
+
+
+---
+- name: "playbook for checking copy modukle"
+  hosts: localhost
+
+  tasks:
+
+  - name: Copy using inline content
+    ansible.builtin.copy:
+      content: "some content hbciacegciscjbsihdcgsiuhcsbciugou"
+      dest: ~/Downloads/some.txt
+      mode: '777'
+
+      
+ 
