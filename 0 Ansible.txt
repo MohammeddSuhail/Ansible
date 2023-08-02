@@ -1,4 +1,6 @@
-Roles: is a new functionality the community people create
+Roles: 
+helps organizing and sharinf complex ansible orchestrations
+is a new functionality the community people create
 
 
 Plugin: extension of a existing functinality

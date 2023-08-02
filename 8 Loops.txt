@@ -71,3 +71,45 @@ tasks :
     with_dict : '{{websites}}' 
     when : 'item.value.author_id == "as001"
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+my examples:
+
+
+looping an array:
+  - name: "Print data"
+    ansible.builtin.shell:
+      cmd: echo "{{item}}" >> res.txt
+    when: '{{ item.Customer == "ADIQ" }}'
+    with_items: '{{custu.list}}'
+    register: re
+
+
+looping an dictionary and accessing key and value:
+  - name: "working the required record"
+    debug:
+      msg: "{{item.key}}     {{item.value}}"
+    when: '{{ item.value == "a" }}'
+    loop: "{{ rec | dict2items}}"
+
+
+

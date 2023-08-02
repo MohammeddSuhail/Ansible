@@ -17,3 +17,8 @@ tasks:
 
 
 
+when: '{{ item.Customer == "ADIQ" }}'
+
+
+
+when: '{{ item.value == "a" }}'

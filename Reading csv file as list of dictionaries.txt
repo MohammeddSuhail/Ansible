@@ -1,0 +1,6 @@
+  - name: Read cusumer from CSV file and return a dictionary
+    community.general.read_csv:
+      path: cust.csv
+    register: custu
+
+    

@@ -1,0 +1,10 @@
+---
+
+- name: "playbook for ping system and display details of files"
+  hosts: myHosts
+
+  tasks:
+
+  - name: This command will change the working directory to somedir/
+    ansible.builtin.shell:
+      cmd: awk '{ print $0 }' cust.csv >> res.txt
