@@ -1,0 +1,244 @@
+---
+- name: "checking variables"
+  hosts: myHosts
+
+  vars:
+    favcolor: blue
+
+  tasks:
+
+  - name: "something"
+    debug: 
+      msg: '{{vars.favcolor}}'     or just '{{favcolor}}'
+
+
+
+
+
+
+
+other one:
+
+set_fact: 
+   variable_name: value
+
+ex:
+set_fact: 
+   rec: "{{item}}"
+
+here rec is the variable and it will bw assigned a value item
+
+
+
+
+
+
+
+
+---
+
+- name: "checking variables"
+  hosts: myHosts
+
+  vars:
+    some: 
+      some1: "a"
+      some2: "b"
+
+  tasks:
+
+  - name: "something"
+    debug: 
+      msg: 'some: {{item}}'
+    with_items: '{{some}}'
+
+
+
+
+
+
+
+
+
+
+
+
+---
+School:
+- name: DPS
+  principal: Someone
+  Students:
+  - rno: 11
+    name: Gautam Jha
+    marks: 53
+
+
+equivalet to:
+{
+    "School": [
+        {
+        "name": "DPS",
+        "principal": "Someone",
+        "Students":[
+            {
+                "rno": 11,
+                "name": "Gautam Jha",
+                "marks": 53
+            }
+        ]
+        }
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+# String datatype
+myself: Gautam Jha
+fruit: "apple"
+job: 'Devops Engineer'
+
+
+explicit string: !!str here string is explicity defined data type fot this key
+
+number: 5478
+
+marks: 95.74
+
+booleanValue: !!bool No # n, N, false, False, FALSE
+# same for true --> yes, y, Y
+
+#specify the type
+zero: !!int 0
+PositiveNum: !!int 45
+negetiveNum: !!int -96
+binaryNum: !!int 0b1101
+octalNum: !!int 06547
+hexa: !!int 0x45
+commaValue: !!int +540_000 #540,000
+
+#floating point numbers
+marks: !!float 56.89
+infinite: !!float .inf
+not a num: .nan
+
+# null
+surname: !!null Null #or null, NULL, ~ 
+# sometimes keys may also be null
+~: this is a null key.
+
+
+# only date without time
+Date: 2022-01-28
+# for both date and time
+date and time: 2022-01-28T02:59:43
+
+
+
+
+
+
+
+
+
+# sequence item in different line
+student: !!seq
+ - marks
+ - name
+ - roll_no
+
+# sequence item in same line
+cities: [new delhi,mumbai]
+
+# sparse sequence
+sparse seq:
+ - hey
+ - how
+ - 
+ - Null
+ - sup
+
+
+# nested sequence
+nested_seq:
+ - Fruit
+   - Apple
+   - banana
+   - Grapes
+ - Names
+   - Gautam Jha
+   - Kunal kushwaha
+   - Rohit
+ - Vegitables
+   - Capsicum
+   - Carrot
+   - Cabbage
+
+# maps 
+"apple" : "I am a red fruit"
+1: "this is gautam's roll number."
+
+# nested maping
+name: Gautam Jha
+role:
+  age: 78
+  job: student
+
+# same as 
+name: Gautam Jha
+role: { age: 78, job: student}
+
+# pairs
+who am i: !!pairs
+ - job: student
+ - job: teacher
+# same as
+who am i: !!pairs [job: student, job: teacher]
+
+names: !!set
+ ? Kunal
+ ? Gautam
+ ? Rahul
+ ? Apoorv
+
+# dictionary !!omap
+people: !!omap
+ - kunal:
+   name: kunal kushwaha
+   age: 78
+   height: 678
+ - rahul:
+   name:  Rahul Op
+   age: 50
+   height: 456
+
+
+# reusing some properties with anchors
+
+likings: &likes
+ fav fruit: mango
+ dislikes: Grapes
+
+person1:
+ name: Kunal kushwaha
+ <<: *likes
+
+
+person2:
+ name: Gautam Jha
+ <<: *likes
+ dislikes: apple
+
+
+person3:
+ name: Rahul
+ <<: *likes
