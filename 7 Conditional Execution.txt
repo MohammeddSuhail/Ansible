@@ -20,5 +20,7 @@ tasks:
 when: '{{ item.Customer == "ADIQ" }}'
 
 
+rec.ICG_VSAM_DB == "POSTGRESQL"
 
-when: '{{ item.value == "a" }}'
+
+when: item.Customer == customer_name 
