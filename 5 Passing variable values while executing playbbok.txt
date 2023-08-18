@@ -26,7 +26,7 @@ temp_file=/tmp/test3
 
 
 
-5 Passing variable values while executing playbbok:
+Passing variable values while executing playbbok:
 ansible-playbook invvars.yml -e file_state=touch 
                               //setting file_state as touch
 
