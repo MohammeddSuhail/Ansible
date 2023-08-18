@@ -100,7 +100,11 @@ while executing use:
 ansible-playbook -i inventory_file_name playbook_name.yml 
 ex:
 ansible-playbook -i inventory playbook_name.yml 
-            
+
+or
+
+ansible-playbook playbook_name.yml 
+U neednot specify the inventory file, if u have specified in cfg file
 
 
 
