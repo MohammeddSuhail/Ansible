@@ -104,7 +104,7 @@ ansible-playbook -i inventory playbook_name.yml
 or
 
 ansible-playbook playbook_name.yml 
-U neednot specify the inventory file, if u have specified in cfg file
+U need not specify the inventory file, if u have specified in cfg file
 
 
 
