@@ -29,4 +29,22 @@ temp_file=/tmp/test3
 Passing variable values while executing playbbok:
 ansible-playbook invvars.yml -e file_state=touch 
                               //setting file_state as touch
+ex:
+ansible-playbook playbook_name.yml -e "customer_name=some_name"
+
+
+
+Passing mutiple args:
+ansible-playbook playbook_name.yml -e "customer_name=some_name" -e "build_name=99"
+
+
+
+Using --extra-vars:
+ansible-playbook task_main.yml --extra-vars "customer_name=ADIQ"
+
+ansible-playbook task_main.yml --extra-vars customer_name="ADIQ"
+
+ansible-playbook task_main.yml --extra-vars "customer_name=ADIQ build_name=99"
+
+
 
