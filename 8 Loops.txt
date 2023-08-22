@@ -113,3 +113,18 @@ looping an dictionary and accessing key and value:
 
 
 
+
+
+
+loop_control:
+the loop_control option can be used to specify the name of the variable to be used for the loop
+
+ex:
+- name: Find correct customer in csv and set_fact
+  set_fact:
+    correctCust: "{{cust}}"
+  when: cust.Customer == customer_name
+  loop: "{{ custlist.list }}"
+  loop_control:
+    loop_var: cust
+
