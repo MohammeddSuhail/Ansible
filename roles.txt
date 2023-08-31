@@ -94,3 +94,26 @@ inside roles/generate_tar/tasks/main.yml:
     src: roles/generate_tar/templates/temp_disp.j2
 
     dest: result
+
+
+
+
+
+
+
+adding roles inside ansible playbook:
+---
+- name: some name
+  hosts: localhost
+  gather_facts: yes
+
+  roles:
+   - role1
+   - role2
+   - role3
+
+another way:
+
+- name: Include Role
+  include_role:
+    name: generate-ini
