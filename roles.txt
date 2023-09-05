@@ -117,3 +117,23 @@ another way:
 - name: Include Role
   include_role:
     name: generate-ini
+
+
+
+
+another way:
+
+  - import_role:
+      name: role_name
+      tasks_from: tasks1.yml
+    tags:
+      - postgres
+
+  - import_role:
+      name: role_name
+      tasks_from: tasks2.yml
+
+directory structure will be something like,
+role_name:
+  tasks1.yml
+  tasks2.yml
