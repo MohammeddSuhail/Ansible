@@ -99,7 +99,7 @@ looping an array:
   - name: "Print data"
     ansible.builtin.shell:
       cmd: echo "{{item}}" >> res.txt
-    when: '{{ item.Customer == "ADIQ" }}'
+    when: '{{ item.Customer == "xyz" }}'
     with_items: '{{custu.list}}'
     register: re
 
