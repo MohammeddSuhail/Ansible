@@ -1,4 +1,4 @@
-Playbooks: (will be in yml file)
+Playbooks: (will be a yml file)
 list of tasks u want to execute many times.
 indentation and all are important
 
