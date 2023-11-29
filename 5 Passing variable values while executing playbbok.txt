@@ -40,11 +40,11 @@ ansible-playbook playbook_name.yml -e "customer_name=some_name" -e "build_name=9
 
 
 Using --extra-vars:
-ansible-playbook task_main.yml --extra-vars "customer_name=ADIQ"
+ansible-playbook task_main.yml --extra-vars "customer_name=XYZ"
 
-ansible-playbook task_main.yml --extra-vars customer_name="ADIQ"
+ansible-playbook task_main.yml --extra-vars customer_name="XYZ"
 
-ansible-playbook task_main.yml --extra-vars "customer_name=ADIQ build_name=99"
+ansible-playbook task_main.yml --extra-vars "customer_name=XYZ build_name=99"
 
 
 
