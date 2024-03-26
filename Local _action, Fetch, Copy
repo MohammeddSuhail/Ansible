@@ -1,0 +1,11 @@
+Local action: 
+to perform in ansible controller if the host is some other server
+
+Fetch: 
+gets the files from remote to Ansible controller(from the host it's running on to Ansible controller)
+
+Copy: 
+copy from Ansible controller to remote(from Ansible controller to host it's running on)
+
+Synchronise: 
+similar to copy/fetch
