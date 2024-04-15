@@ -1,0 +1,42 @@
+1. create ssh keys on app server.
+
+2. Add this key (id_rsa.pub) to the authorized_keys file on the db server(.ssh/authorized_keys).
+   You can perform the below command on app server to do that.
+   ssh-copy-id username@IP_Address_of_DB_Server
+
+3. If we don't mention ansible_ssh_pass=db_server_pw ansible_ssh_user=db_server_username,
+
+   Then while executing the playbook we must give --ask-pass, where you have to enter password to account on db server.
+   ex: 
+    ansible-playbook sample.yml -i inventory --ask-pass
+   
+   If we specify then just,
+   ex: 
+   ansible-playbook sample.yml -i inventory
+
+
+
+On db server you must have sudo access to "postgres" account
+
+
+
+
+
+---
+
+- hosts: server_name #or db_servers
+
+  tasks:
+
+  - name: "Connect and perform some command"
+    shell: touch /home/suhails/file1.txt
+
+
+
+
+
+inventory:
+
+[db_servers]
+nrc3ling01vm ansible_host=server_ip ansible_ssh_pass=db_server_pw ansible_ssh_user=db_server_username
+
