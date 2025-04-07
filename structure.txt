@@ -100,5 +100,57 @@ Vars.yml structure:
     some_var:    "/tmp/region_junk_remover"
 
 
+hosts structure:
+[db_srv]
+<db_srv>
+[app_srv]
+<app_srv>
 
 
+ansible.cfg:
+[defaults]
+inventory = inventory/hosts, inventory/config
+roles_path = roles
+timeout = 120
+forks = 3
+[ssh_connection]
+ssh_args = -o ControlMaster=auto -o ControlPersist=6000s -o ServerAliveInterval=60 -o TCPKeepAlive=yes
+PreferredAuthentications = publickey
+pipelining = True
+retries = 10
+[persistent_connection]
+connect_timeout = 300
+connect_retries = 30
+connect_interval = 1
+
+
+playbook:
+---
+- hosts: all
+  gather_facts: True
+  tasks:
+    - import_role:
+        name: home_directory_usage_alerter
+        tasks_from: home_disk_usage.yml
+
+- hosts: localhost
+  gather_facts: True
+  tasks:
+  - import_role:
+      name: home_directory_usage_alerter
+      tasks_from: email_address_gathering.yml
+
+  - import_role:
+      name: home_directory_usage_alerter
+      tasks_from: send_email_alerts.yml
+
+
+
+
+role file contents:
+---
+  - name: "home_disk_usage: Create temporary output directory"
+    ......
+
+  - name: "home_disk_usage: Transfer home_disk_usage_report.py script to the temporary directory on hosts"
+    ..........
