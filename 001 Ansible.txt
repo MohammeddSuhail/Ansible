@@ -1,0 +1,19 @@
+Roles: 
+helps organizing and sharing complex ansible orchestrations
+is a new functionality the community people create
+
+
+Plugin: extension of a existing functinality
+
+
+inventory file:
+List of devices that we are controlling(can use IP addresses or fully qualified domain name)
+
+
+Modules:
+(also referred to as “task plugins” or “library plugins”) are discrete units of code that can be used from the command line or in a playbook task.
+
+
+Playbooks: (will be in yml file)
+list of tasks u want to execute many times
+
